@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Timo — Design your semester.</title>
 <script>
-window.GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; /* 측정 ID: 여기 한 곳만 교체하면 됩니다 */
+window.GA_MEASUREMENT_ID = 'G-CQHZP66KS7'; /* 측정 ID: 여기 한 곳만 교체하면 됩니다 */
 (function(){
   window.dataLayer = window.dataLayer || [];
   window.gtag = function(){ dataLayer.push(arguments); };
@@ -51,18 +51,21 @@ window.GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; /* 측정 ID: 여기 한 곳만 교�
 /* Peach — blush pink to warm cream */
 .tt[data-theme="peach"],[data-theme="peach"]{
   --g-bg:#FFFCF9; --g-line:rgba(150,100,110,.14); --g-ink:#4A2B36; --g-mut:rgba(74,43,54,.45);
+  --g-canvas:#FCF8EC;
   --c1:#FCD2DF;--c2:#FDDBE0;--c3:#FEE4E2;--c4:#FEEDE3;--c5:#FFF6E4;--c6:#F8BCCF;--c7:#FBDCC4;--c8:#F7C9C2;
   --i1:#6A2B45;--i2:#6A2E42;--i3:#6A333E;--i4:#6A4030;--i5:#6A5228;--i6:#5A1E38;--i7:#6A4530;--i8:#6A3028;
 }
 /* Lemonade — creamy lemon and milky sky blue */
 .tt[data-theme="lemonade"],[data-theme="lemonade"]{
   --g-bg:#FFFEF5; --g-line:rgba(90,80,60,.15); --g-ink:#33465A; --g-mut:rgba(51,70,90,.46);
+  --g-canvas:#FBF6E2; --g-accent:#F5E7A0;
   --c1:#FEFDD7;--c2:#FEF7B9;--c3:#FDE7E6;--c4:#F8CBD1;--c5:#E8F5FC;--c6:#E5EFF6;--c7:#D6E5F0;--c8:#3D5C7B;
   --i1:#5A4A1E;--i2:#5A4A1E;--i3:#6B3A42;--i4:#5C2B36;--i5:#1E3A4E;--i6:#1E3A4E;--i7:#193346;--i8:#FFFFFF;
 }
 /* Opal — pearly neutrals with faint blue, lilac and mint */
 .tt[data-theme="opal"],[data-theme="opal"]{
   --g-bg:#FAFAF8; --g-line:rgba(70,75,85,.15); --g-ink:#2F3238; --g-mut:rgba(47,50,56,.46);
+  --g-canvas:#F4FBF8; --g-accent:#BFE7DC;
   --c1:#CDDFEB;--c2:#F1E2F9;--c3:#D4F0EA;--c4:#EFEEE7;--c5:#DFDCD5;--c6:#F7E4E9;--c7:#FBF2DC;--c8:#BFCEDC;
   --i1:#22323E;--i2:#3A2A42;--i3:#1E3A34;--i4:#333029;--i5:#333029;--i6:#462A32;--i7:#453A22;--i8:#1C2C38;
 }
@@ -113,7 +116,7 @@ button{font-family:inherit}
 
 /* ============================ nav ============================ */
 .folderbar{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;
-  padding:26px clamp(14px,4%,44px) 0 clamp(2px,1%,10px)}
+  padding:46px clamp(14px,4%,44px) 0 clamp(2px,1%,10px)}
 .logo{font-family:var(--serif);font-weight:500;font-size:1.6rem;letter-spacing:.005em;
   color:var(--ink);display:block;line-height:1;padding-bottom:13px}
 
@@ -199,6 +202,7 @@ button{font-family:inherit}
 .sec-head h2 em{font-style:normal;font-weight:700;color:var(--accent)}
 .sec-head h2.en{font-family:var(--serif);font-weight:400;letter-spacing:0;
   font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.15;margin-top:18px}
+.sec-head h2.en em{font-style:italic;font-weight:500;color:inherit}
 .sec-head p + p{margin-top:10px}
 .sec-head p{font-family:var(--kr-display);color:var(--ink-55);margin-top:16px;font-size:.92rem;line-height:1.8}
 .beats{display:flex;flex-direction:column;gap:16px;max-width:800px;margin:0 auto}
@@ -268,7 +272,7 @@ button{font-family:inherit}
   padding:9px 11px;border:1px solid var(--ink-12);border-radius:9px;background:#fff;transition:border-color .18s ease}
 .field input:hover{border-color:var(--ink-32)}
 .field input:focus{border-color:var(--accent);outline:none}
-.row3{display:grid;grid-template-columns:1fr 1fr 70px;gap:9px}
+.row3{display:grid;grid-template-columns:minmax(0,1fr) 70px;gap:9px}
 
 .slots{display:flex;flex-direction:column;gap:10px;margin-bottom:11px}
 .slot{border:1px solid var(--ink-12);border-radius:11px;padding:11px 11px 12px;background:#FDFBFC}
@@ -282,20 +286,29 @@ button{font-family:inherit}
   font-size:.83rem;font-weight:500;color:var(--ink-55);cursor:pointer;transition:all .16s ease}
 .daypick button:hover{border-color:var(--ink-32)}
 .daypick button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
-.timepair{display:grid;grid-template-columns:minmax(0,1fr) 14px minmax(0,1fr);gap:6px;align-items:center}
-.timepair input{width:100%;min-width:0;-webkit-appearance:none;appearance:none;
+.timepair{display:grid;grid-template-columns:1fr;gap:8px}
+.timefield{display:grid;grid-template-columns:32px minmax(0,1.25fr) minmax(0,1fr) minmax(0,1fr);gap:6px;align-items:center}
+.time-label{font-size:.72rem;color:var(--ink-55)}
+.timepart{position:relative;display:flex;align-items:center;min-width:0}
+.timepart span{position:absolute;right:6px;pointer-events:none;font-size:.7rem;color:var(--ink-55)}
+.timepair .timepart input{padding-right:23px}
+.timepair select,.timepair input{width:100%;min-width:0;-webkit-appearance:none;appearance:none;
   font-family:var(--mono);font-variant-numeric:tabular-nums;
   font-size:.86rem;color:var(--ink);text-align:center;
   padding:8px 4px;border:1px solid var(--ink-12);border-radius:8px;background:#fff}
-.timepair input:hover{border-color:var(--ink-32)}
-.timepair input:focus{border-color:var(--accent);outline:none}
+.timepair select:hover,.timepair input:hover{border-color:var(--ink-32)}
+.timepair select:focus,.timepair input:focus{border-color:#8E8E93;background:#E5E5E7;outline:none;box-shadow:0 0 0 2px rgba(90,90,95,.12)}
+.timefield:focus-within{border-radius:8px;background:#F1F1F3}
+.time-help{font-size:.72rem;color:var(--ink-55);margin-bottom:10px}
+.time-error{font-size:.75rem;color:#A12E45;line-height:1.5;margin-top:7px}
+.time-error:empty{display:none}
 .timepair .dash{text-align:center;color:var(--ink-32);font-size:.75rem}
 .durs{display:flex;gap:4px;margin-top:7px;flex-wrap:wrap}
 .durs button{flex:1;min-width:38px;padding:5px 0;border:1px solid var(--ink-12);background:#fff;
   border-radius:7px;font-family:var(--kr);font-size:.72rem;color:var(--ink-32);cursor:pointer;
   transition:all .16s ease}
 .durs button:hover{border-color:var(--pink-deep);color:var(--accent)}
-.durs button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);background:var(--pink-soft)}
+.durs button[aria-pressed="true"]{border-color:#A6A6AB;color:var(--ink);background:#E5E5E7}
 
 .addslot{width:100%;border:1px dashed var(--ink-12);background:transparent;border-radius:10px;
   padding:10px;font-size:.83rem;color:var(--ink-55);cursor:pointer;font-weight:500;
@@ -374,6 +387,7 @@ button{font-family:inherit}
 .modal-foot{padding:16px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
   border-top:1px solid var(--ink-12)}
 .modal-foot p{font-size:.76rem;color:var(--ink-32);flex:1;min-width:180px;line-height:1.45}
+.modal-foot .btn:disabled{opacity:.48;cursor:wait;transform:none;box-shadow:none}
 
 .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;pointer-events:none;
   background:var(--ink);color:#fff;padding:11px 20px;border-radius:99px;font-size:.85rem;z-index:100;
@@ -382,7 +396,7 @@ button{font-family:inherit}
 
 @media(max-width:640px){
   :root{--pad:14px}
-  .folderbar{padding:18px 4px 0 4px;gap:8px}
+  .folderbar{padding:32px 4px 0 4px;gap:8px}
   .logo{font-size:1.25rem;padding-bottom:9px}
   .tab{padding:9px 14px;font-size:.79rem;border-radius:11px 11px 0 0}
   .tab[aria-selected="true"]{padding:11px 15px 15px;margin-bottom:-5px}
@@ -408,10 +422,10 @@ button{font-family:inherit}
   .build-head{padding-bottom:16px;margin-bottom:18px}
   .build-head .swatches{margin-left:0;justify-content:flex-start}
   .panel{padding:18px 15px 20px}
-  .row3{grid-template-columns:1fr 1fr 56px;gap:7px}
+  .row3{grid-template-columns:minmax(0,1fr) 56px;gap:7px}
   .durs button{min-width:0;font-size:.68rem;padding:5px 0}
   .timepair{gap:4px}
-  .timepair input{font-size:.8rem;padding:8px 2px}
+  .timepair select,.timepair input{font-size:.8rem;padding:8px 2px}
   .canvas-head{gap:8px}
   #ttName{width:100%;min-width:0}
   .canvas-tools{width:100%;margin-left:0}
@@ -442,13 +456,34 @@ button{font-family:inherit}
    touch-target input at exactly 16px so tapping a field stays put */
 @media(pointer:coarse){
   .field input,#ttName{font-size:16px}
-  .timepair input{font-size:16px;padding:8px 2px}
+  .timepair select,.timepair input{font-size:16px;padding:8px 2px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition-duration:.01ms!important}
   .rv{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
+
+/* ============================ feedback card ============================ */
+#fbModal{z-index:260}
+.fb-in{max-width:430px}
+.fb-body{padding:20px 20px 4px}
+.fb-q{font-size:.92rem;font-weight:600;letter-spacing:-.02em;line-height:1.5}
+.fb-q.second{margin-top:26px}
+.fb-rate{display:flex;gap:7px;margin-top:13px}
+.fb-rate button{flex:1;padding:12px 0;border:1px solid var(--ink-12);background:#fff;border-radius:10px;
+  font-family:inherit;font-size:.95rem;font-weight:600;color:var(--ink-55);cursor:pointer;
+  transition:background .16s ease,border-color .16s ease,color .16s ease}
+.fb-rate button:hover{border-color:var(--ink-32)}
+.fb-rate button[aria-pressed="true"]{background:var(--pink);border-color:var(--pink-deep);color:var(--accent)}
+.fb-scale{display:flex;justify-content:space-between;margin-top:7px;font-size:.7rem;color:var(--ink-32)}
+.fb-opts{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px;padding-bottom:16px}
+.fb-opts button{border:1px solid var(--ink-12);background:#fff;border-radius:99px;padding:8px 14px;
+  font-family:inherit;font-size:.8rem;font-weight:500;color:var(--ink-55);cursor:pointer;
+  transition:background .16s ease,border-color .16s ease,color .16s ease}
+.fb-opts button:hover{border-color:var(--ink-32)}
+.fb-opts button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+#fbSubmit{min-width:104px}
 </style>
 </head>
 <body>
@@ -505,7 +540,7 @@ button{font-family:inherit}
             <div class="sec-head rv">
               <p class="eyebrow">왜 Timo인가</p>
               <h2 class="en">Time, and More.</h2>
-              <p class="intro">Timo는 Time + More에서 시작되었습니다. 시간표를 더 아름답게, 더 나답게, 더 즐겁게 기록하는 경험을 만듭니다.</p>
+              <p class="intro">Timo는 Time + More에서 시작되었습니다.<br>시간표를 더 예쁘고 더 나답게 만듭니다.</p>
               
             </div>
             <div class="beats">
@@ -519,7 +554,7 @@ button{font-family:inherit}
 
         <section class="sec" id="how">
           <div class="inner">
-            <div class="sec-head rv"><p class="eyebrow">만드는 법</p><h2>세 단계면 <em>끝납니다</em>.</h2></div>
+            <div class="sec-head rv"><p class="eyebrow">만드는 법</p><h2 class="en"><em>3 Steps</em></h2></div>
             <div class="steps">
               <div class="step rv"><span class="n">01</span><h3>강의 담기</h3>
                 <p>강의명과 강의실을 적고 요일·시간을 고릅니다. 요일마다 시간이 다르면 시간 블록을 하나 더 추가하면 됩니다.</p></div>
@@ -566,13 +601,12 @@ button{font-family:inherit}
         <div class="row3">
           <div class="field"><label for="fPlace">강의실</label>
             <input id="fPlace" type="text" placeholder="포B152" maxlength="18" autocomplete="off"></div>
-          <div class="field"><label for="fProf">교수</label>
-            <input id="fProf" type="text" placeholder="OOO" maxlength="12" autocomplete="off"></div>
           <div class="field"><label for="fCredit">학점</label>
             <input id="fCredit" type="number" value="3" min="0" max="9" step="1"></div>
         </div>
 
         <div class="field" style="margin-bottom:8px"><label>요일과 시간</label></div>
+        <p class="time-help">시·분을 직접 입력하거나 목록에서 선택하세요. 분은 5분 단위입니다.</p>
         <div class="slots" id="slotArea"></div>
         <button class="addslot" id="btnAddSlot" type="button">+ 다른 시간 추가</button>
 
@@ -663,6 +697,7 @@ button{font-family:inherit}
         <button class="js-bg" data-bg="plain" aria-pressed="true">없음</button>
         <button class="js-bg" data-bg="dots" aria-pressed="false">땡땡이</button>
         <button class="js-bg" data-bg="hearts" aria-pressed="false">하트</button>
+        <button class="js-bg" data-bg="floral" aria-pressed="false">꽃무늬</button>
         <button class="js-bg" data-bg="stripe" aria-pressed="false">스트라이프</button>
         <button class="js-bg" data-bg="gingham" aria-pressed="false">체크</button>
         <button class="js-bg" data-bg="blush" aria-pressed="false">블러쉬</button>
@@ -670,8 +705,41 @@ button{font-family:inherit}
     </div>
     <div class="modal-img"><img id="mImg" alt="내보낸 시간표"></div>
     <div class="modal-foot">
-      <a class="btn btn-pink" id="mDl" download="">이미지 저장</a>
-      <p>휴대폰에서는 공유 시트의 사진에 저장을 눌러 주세요. 시트가 열리지 않으면 위 미리보기 이미지를 길게 눌러 저장할 수 있습니다.</p>
+      <button class="btn btn-pink" id="mDl" type="button" disabled>이미지 준비 중…</button>
+      <a class="btn btn-ghost hidden" id="mOpen" target="_blank" rel="noopener">이미지 크게 보기</a>
+      <p id="saveGuide">이미지를 준비하고 있어요.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal hidden" id="fbModal">
+  <div class="modal-in fb-in" role="dialog" aria-modal="true" aria-label="만족도 조사">
+    <div class="modal-head">
+      <span>잠깐, 한 가지만요</span>
+      <button class="icobtn" id="fbClose" aria-label="닫기">닫기</button>
+    </div>
+    <div class="fb-body">
+      <p class="fb-q">만든 시간표가 마음에 드셨나요?</p>
+      <div class="fb-rate" id="fbRate" role="group" aria-label="만족도 점수">
+        <button type="button" data-r="1" aria-pressed="false">1</button>
+        <button type="button" data-r="2" aria-pressed="false">2</button>
+        <button type="button" data-r="3" aria-pressed="false">3</button>
+        <button type="button" data-r="4" aria-pressed="false">4</button>
+        <button type="button" data-r="5" aria-pressed="false">5</button>
+      </div>
+      <div class="fb-scale"><span>아쉬워요</span><span>마음에 들어요</span></div>
+      <p class="fb-q second">Timo에 어떤 기능이 추가되면 좋을까요?</p>
+      <div class="fb-opts" id="fbOpts" role="group" aria-label="기능 요청">
+        <button type="button" data-f="bg_color" aria-pressed="false">배경색 직접 변경</button>
+        <button type="button" data-f="more_themes" aria-pressed="false">더 많은 테마</button>
+        <button type="button" data-f="more_patterns" aria-pressed="false">더 많은 패턴</button>
+        <button type="button" data-f="share" aria-pressed="false">공유 기능 강화</button>
+        <button type="button" data-f="other" aria-pressed="false">기타</button>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-pink" id="fbSubmit">보내기</button>
+      <p>익명으로 집계되며 Timo를 다듬는 데에만 씁니다.</p>
     </div>
   </div>
 </div>
@@ -685,12 +753,151 @@ window.__timoTrack = window.__timoTrack || function(name,params){
     try{ window.gtag("event",name,params||{}); }catch(e){}
   }
 };
+
+/* ============================================================
+   analytics helpers
+   GA4로 나가는 값은 전부 범주형/숫자형이다. 강의명·교수·강의실·
+   시간표 이름 등 사용자가 직접 입력한 문자열은 절대 넣지 않는다.
+   ============================================================ */
+var LS={
+  get:function(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+  set:function(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+};
+var SS={
+  get:function(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } },
+  set:function(k,v){ try{ sessionStorage.setItem(k,v); }catch(e){} }
+};
+
+function merge(a,b){
+  var o={},k;
+  if(a) for(k in a) if(Object.prototype.hasOwnProperty.call(a,k)) o[k]=a[k];
+  if(b) for(k in b) if(Object.prototype.hasOwnProperty.call(b,k)) o[k]=b[k];
+  return o;
+}
+
+/* UTM: 최초 진입 때 읽어 세션에 보관 → Home↔Builder를 오가도 유지된다.
+   값이 없으면 네 키 모두 "direct"로 통일한다. */
+var UTM=(function(){
+  var keys=["utm_source","utm_medium","utm_campaign","utm_content"], found=null;
+  try{
+    var q=new URLSearchParams(location.search);
+    keys.forEach(function(k){
+      var v=q.get(k);
+      if(v){ found=found||{}; found[k]=String(v).slice(0,80); }
+    });
+  }catch(e){}
+  if(found){ SS.set("timo:utm",JSON.stringify(found)); }
+  else{ try{ var raw=SS.get("timo:utm"); if(raw) found=JSON.parse(raw); }catch(e2){ found=null; } }
+  var out={};
+  keys.forEach(function(k){ out[k]=(found&&found[k])?found[k]:"direct"; });
+  return out;
+})();
+function withUTM(p){
+  p=p||{};
+  for(var k in UTM){
+    if(Object.prototype.hasOwnProperty.call(UTM,k) && !(k in p)) p[k]=UTM[k];
+  }
+  return p;
+}
+
+function courseCount(){ return (typeof courses!=="undefined"&&courses)?courses.length:0; }
+function creditTotal(){
+  return (typeof courses!=="undefined"&&courses)
+    ? courses.reduce(function(a,c){return a+(c.credit||0);},0) : 0;
+}
+function currentTheme(){
+  var el=document.getElementById("appTT");
+  return (el&&el.dataset.theme)||"peach";
+}
+/* 가로 카드는 언제나 무늬 없이 그려지므로 plain으로 기록한다 */
+function effectiveBg(){
+  if(typeof exportMode!=="undefined"&&exportMode==="card") return "plain";
+  return (typeof exportBg!=="undefined"&&exportBg)||"plain";
+}
+function getAnalyticsContext(){
+  return {
+    theme:currentTheme(),
+    bg:effectiveBg(),
+    mode:(typeof exportMode!=="undefined"&&exportMode)||"wall",
+    course_count:courseCount(),
+    credit_total:creditTotal()
+  };
+}
+function trackValidation(reason){
+  window.__timoTrack("validation_error",{reason:reason,course_count:courseCount()});
+}
+
+/* 제작 소요시간: 빌더 최초 진입 시각을 세션에 한 번만 기록해 두고,
+   내보내기가 여러 번 일어나도 같은 기준점에서 잰다 */
+var BUILDER_START="timo:builder_started_at";
+function markBuilderStart(){
+  if(!SS.get(BUILDER_START)) SS.set(BUILDER_START,String(Date.now()));
+}
+function timeToExport(){
+  var t=parseInt(SS.get(BUILDER_START)||"0",10);
+  if(!t) return 0;
+  var s=Math.round((Date.now()-t)/1000);
+  return (s>=0&&s<36000)?s:0;
+}
+
+/* 첫 강의 등록 — 브라우저당 1회 */
+var firstCourseTracked=false;
+function trackFirstCourse(){
+  if(firstCourseTracked) return;
+  firstCourseTracked=true;
+  Store.get("timo:first_course_tracked").then(function(v){
+    if(v) return;
+    window.__timoTrack("first_course_add",withUTM({course_count:courseCount()}));
+    Store.set("timo:first_course_tracked",true);
+  }).catch(function(){});
+}
+
+/* 재방문 판별 — 식별자를 만들지 않고 방문 여부 플래그만 둔다 */
+var visitTracked=false;
+function trackVisit(hasDraft,savedCount){
+  if(visitTracked) return;
+  visitTracked=true;
+  var vt=LS.get("timo:visited")?"returning":"new";
+  LS.set("timo:visited","1");
+  window.__timoTrack("timo_visit",withUTM({
+    visitor_type:vt,
+    has_draft:!!hasDraft,
+    saved_timetable_count:savedCount||0
+  }));
+}
+
+/* Hero CTA A/B — 배정은 localStorage에 고정, 노출은 세션 1회 */
+var CTA_EXPERIMENT="hero_cta_copy";
+var ctaVariant=(function(){
+  var v=LS.get("timo:cta_variant");
+  if(v!=="A"&&v!=="B"){ v=(Math.random()<0.5)?"A":"B"; LS.set("timo:cta_variant",v); }
+  return v;
+})();
+(function(){
+  var hero=document.querySelector('.js-open[data-location="hero"]');
+  if(hero&&ctaVariant==="B") hero.textContent="3분 만에 시간표 만들기";
+  if(!SS.get("timo:cta_exposed")){
+    SS.set("timo:cta_exposed","1");
+    window.__timoTrack("experiment_exposure",{experiment_name:CTA_EXPERIMENT,variant:ctaVariant});
+  }
+})();
+
+var exportBusy=false;
+function setExportBusy(v){
+  exportBusy=!!v;
+  var b=document.getElementById("btnExport");
+  if(!b) return;
+  b.disabled=exportBusy;
+  b.textContent=exportBusy ? "만드는 중…" : "이미지로 저장";
+}
 var DAYS=["MON","TUE","WED","THU","FRI"];
 var DAYS_KO=["월","화","수","목","금"];
 var START=6*60, LAST=24*60, STEP=1, MAXSLOTS=4;
 var PXMIN=0.7;
 
-function fmt(m){return String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0");}
+function hour12(m){return Math.floor(m/60)%12||12;}
+function fmt(m){return hour12(m)+":"+String(m%60).padStart(2,"0");}
+function choiceTime(m){return (m===1440?'다음 날 오전 ':m<720?'오전 ':'오후 ')+fmt(m);}
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(m){
   return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m];});}
 function toMin(v){
@@ -703,17 +910,13 @@ function toMin(v){
 
 function renderGrid(el,list,opts){
   opts=opts||{};
-  var ends=[],starts=[];
-  list.forEach(function(c){c.slots.forEach(function(s){ends.push(s.end);starts.push(s.start);});});
-  var top=Math.max(START,Math.floor(Math.min.apply(null,starts.concat([9*60]))/60)*60);
-  var bottom=Math.min(LAST,Math.ceil(Math.max.apply(null,ends.concat([18*60]))/60)*60);
-  var n=bottom-top;
+  var range=timeRange(list), top=range.top, bottom=range.bottom, n=range.n;
 
   el.style.gridTemplateRows="22px repeat("+n+","+(opts.pxmin||PXMIN)+"px)";
   var h='<div class="day"></div>';
   DAYS.forEach(function(d){h+='<div class="day">'+d+'</div>';});
   for(var m=top;m<bottom;m+=60){
-    h+='<div class="time" style="grid-column:1;grid-row:'+(m-top+2)+' / span 60">'+Math.floor(m/60)+'</div>';}
+    h+='<div class="time" style="grid-column:1;grid-row:'+(m-top+2)+' / span '+Math.min(60,bottom-m)+'">'+(m%60 ? fmt(m) : hour12(m))+'</div>';}
   for(var d=1;d<=5;d++){
     h+='<div class="cellcol" style="grid-column:'+(d+1)+';grid-row:2 / span '+n+'"></div>';}
   if(!list.length&&opts.emptyText){
@@ -721,7 +924,8 @@ function renderGrid(el,list,opts){
   var k=0;
   list.forEach(function(c){
     c.slots.forEach(function(s){
-      var r=s.start-top+2, span=Math.max(10,s.end-s.start);
+      // 블록은 입력한 실제 시작 시각 그대로 배치한다. (09:30이면 09:00 축에서 30분 아래)
+      var r=s.start-top+2, span=s.end-s.start;
       var meta=[c.place,c.prof].filter(Boolean).join(" · ");
       var span2 = opts.detail
         ? (meta?'<span>'+esc(meta)+'</span>':'')+'<em>'+fmt(s.start)+'–'+fmt(s.end)+'</em>'
@@ -776,11 +980,46 @@ var app=document.getElementById("pageBuild");
 var appTT=document.getElementById("appTT"), appGrid=document.getElementById("appGrid");
 var courses=[], editingId=null, pickedColor=1, uid=0;
 
-var DURS=[50,60,75,90,100,120];
+var DURS=[30,60,75,90,100,120];
 var rows=[{days:[],start:9*60,end:10*60+30}];
 var slotArea=document.getElementById("slotArea");
 var btnAddSlot=document.getElementById("btnAddSlot");
 
+function timeFields(value,key,index){
+  var title=key==='start'?'시작':'종료', base='time'+index+key;
+  var period=value===1440?'next':value<720?'am':'pm';
+  var hours='',minutes='';
+  for(var n=1;n<=12;n++) hours+='<option value="'+n+'"></option>';
+  for(var n=0;n<60;n+=5) minutes+='<option value="'+String(n).padStart(2,'0')+'"></option>';
+  return '<div class="timefield" data-k="'+key+'"><span class="time-label">'+title+'</span>'+
+    '<select data-part="period" aria-label="'+title+' 오전/오후" aria-describedby="timeError'+index+'">'+
+    '<option value="am"'+(period==='am'?' selected':'')+'>오전</option>'+
+    '<option value="pm"'+(period==='pm'?' selected':'')+'>오후</option>'+
+    (key==='end'?'<option value="next"'+(period==='next'?' selected':'')+'>다음 날 오전</option>':'')+'</select>'+
+    '<label class="timepart"><input type="text" inputmode="numeric" maxlength="2" autocomplete="off" list="'+base+'Hours" data-part="hour" value="'+hour12(value)+'" aria-label="'+title+' 시" aria-describedby="timeError'+index+'"><span>시</span></label>'+
+    '<label class="timepart"><input type="text" inputmode="numeric" maxlength="2" autocomplete="off" list="'+base+'Minutes" data-part="minute" value="'+String(value%60).padStart(2,'0')+'" aria-label="'+title+' 분" aria-describedby="timeError'+index+'"><span>분</span></label>'+
+    '<datalist id="'+base+'Hours">'+hours+'</datalist><datalist id="'+base+'Minutes">'+minutes+'</datalist></div>';
+}
+function parseTimeParts(period,hour,minute){
+  if(!/^\d{1,2}$/.test(hour)||!/^\d{1,2}$/.test(minute)) return NaN;
+  var hr=Number(hour),min=Number(minute);
+  if(hr<1||hr>12||min<0||min>59||min%5) return NaN;
+  if(period==='next') return hr===12&&min===0?1440:NaN;
+  if(period!=='am'&&period!=='pm') return NaN;
+  return (hr%12+(period==='pm'?12:0))*60+min;
+}
+function syncTimeFields(field,value){
+  field.querySelector('[data-part="period"]').value=value===1440?'next':value<720?'am':'pm';
+  field.querySelector('[data-part="hour"]').value=String(hour12(value));
+  field.querySelector('[data-part="minute"]').value=String(value%60).padStart(2,'0');
+}
+function timeSelectionError(row,key,value){
+  if(!Number.isFinite(value)||value%5||value<START||value>LAST)
+    return '시는 1~12, 분은 00~55 사이의 5분 단위로 입력해 주세요. 수업 시간은 오전 6시~밤 12시까지 가능합니다.';
+  if((key==='start' && value>=row.end)||(key==='end' && value<=row.start))
+    return '시작 시간은 종료 시간보다 빨라야 합니다. 종료 시간을 시작 시간보다 늦게 선택해 주세요.';
+  return '';
+}
 function renderSlots(){
   slotArea.innerHTML=rows.map(function(r,i){
     return '<div class="slot" data-i="'+i+'">'+
@@ -790,10 +1029,9 @@ function renderSlots(){
         return '<button type="button" data-d="'+di+'" aria-pressed="'+(r.days.indexOf(di)>-1)+'">'+d+'</button>';
       }).join("")+'</div>'+
       '<div class="timepair">'+
-        '<input type="time" data-k="start" step="60" value="'+fmt(r.start)+'" aria-label="시작 시간">'+
-        '<span class="dash">–</span>'+
-        '<input type="time" data-k="end" step="60" value="'+fmt(r.end)+'" aria-label="종료 시간">'+
+        timeFields(r.start,'start',i)+timeFields(r.end,'end',i)+
       '</div>'+
+      '<p id="timeError'+i+'" class="time-error" role="status" aria-live="polite"></p>'+
       '<div class="durs">'+DURS.map(function(d){
         return '<button type="button" data-dur="'+d+'"'+
                (r.end-r.start===d?' aria-pressed="true"':'')+'>'+d+'분</button>';
@@ -809,7 +1047,10 @@ slotArea.addEventListener("click",function(e){
   var du=e.target.closest("[data-dur]");
   if(du){
     var si=+du.closest(".slot").dataset.i;
-    rows[si].end=Math.min(24*60,rows[si].start+ +du.dataset.dur);
+    var nextEnd=rows[si].start+ +du.dataset.dur;
+    var error=timeSelectionError(rows[si],'end',nextEnd);
+    if(error){du.closest('.slot').querySelector('.time-error').textContent=error;return;}
+    rows[si].end=nextEnd;
     renderSlots(); return;
   }
   var db=e.target.closest(".daypick button"); if(!db)return;
@@ -817,25 +1058,19 @@ slotArea.addEventListener("click",function(e){
   if(at>-1) rows[i].days.splice(at,1); else rows[i].days.push(d);
   db.setAttribute("aria-pressed",String(at===-1));
 });
-slotArea.addEventListener("input",function(e){
-  var inp=e.target.closest('input[type="time"]'); if(!inp)return;
-  var slot=inp.closest(".slot"), i=+slot.dataset.i, v=toMin(inp.value);
-  if(v===null) return;
-  rows[i][inp.dataset.k]=v;
-});
 slotArea.addEventListener("change",function(e){
-  var inp=e.target.closest('input[type="time"]'); if(!inp)return;
-  var slot=inp.closest(".slot"), i=+slot.dataset.i, v=toMin(inp.value);
-  if(v===null){ inp.value=fmt(rows[i][inp.dataset.k]); return; }
-  rows[i][inp.dataset.k]=v;
-  if(rows[i].end<=rows[i].start){
-    rows[i].end=Math.min(24*60,rows[i].start+60);
-    slot.querySelector('[data-k="end"]').value=fmt(rows[i].end);
-  }
+  var inp=e.target.closest('[data-part]'); if(!inp)return;
+  var field=inp.closest('.timefield'),slot=inp.closest('.slot'),i=+slot.dataset.i,key=field.dataset.k;
+  var value=parseTimeParts(field.querySelector('[data-part="period"]').value,
+    field.querySelector('[data-part="hour"]').value.trim(),field.querySelector('[data-part="minute"]').value.trim());
+  var error=timeSelectionError(rows[i],key,value),errorEl=slot.querySelector('.time-error');
+  if(error){syncTimeFields(field,rows[i][key]);errorEl.textContent=error;return;}
+  rows[i][key]=value;
+  syncTimeFields(field,value);
+  errorEl.textContent='';
   var len=rows[i].end-rows[i].start;
-  slot.querySelectorAll("[data-dur]").forEach(function(b){
-    if(+b.dataset.dur===len) b.setAttribute("aria-pressed","true");
-    else b.removeAttribute("aria-pressed");
+  slot.querySelectorAll('[data-dur]').forEach(function(b){
+    b.setAttribute('aria-pressed',String(+b.dataset.dur===len));
   });
 });
 btnAddSlot.addEventListener("click",function(){
@@ -886,32 +1121,30 @@ function findClash(slots,ignoreId){
 document.getElementById("btnSave").addEventListener("click",function(){
   var name=document.getElementById("fName").value.trim();
   var place=document.getElementById("fPlace").value.trim();
-  var prof=document.getElementById("fProf").value.trim();
   var credit=Math.max(0,Math.min(9,parseInt(document.getElementById("fCredit").value,10)||0));
 
-  if(!name){msg("강의명을 입력하세요.");document.getElementById("fName").focus();window.__timoTrack("validation_error",{reason:"no_name"});return;}
+  if(!name){msg("강의명을 입력하세요.");document.getElementById("fName").focus();trackValidation("no_name");return;}
   for(var i=0;i<rows.length;i++){
-    if(rows[i].end<=rows[i].start){msg("시간 "+(i+1)+"의 종료 시간이 시작보다 늦어야 합니다.");return;}
+    if(rows[i].start%5||rows[i].end%5){msg("시간 "+(i+1)+"을 5분 단위로 다시 선택해 주세요.");trackValidation("invalid_time");return;}
+    if(rows[i].end<=rows[i].start){msg("시간 "+(i+1)+"의 종료 시간이 시작보다 늦어야 합니다.");trackValidation("invalid_time");return;}
   }
   var slots=expand();
-  if(!slots.length){msg("요일을 하나 이상 고르세요.");window.__timoTrack("validation_error",{reason:"no_day"});return;}
+  if(!slots.length){msg("요일을 하나 이상 고르세요.");trackValidation("no_day");return;}
   var self=selfClash(slots);
-  if(self){msg(self+"요일 안에서 시간 블록끼리 겹칩니다.");window.__timoTrack("validation_error",{reason:"self_clash"});return;}
+  if(self){msg(self+"요일 안에서 시간 블록끼리 겹칩니다.");trackValidation("self_clash");return;}
   var clash=findClash(slots,editingId);
-  if(clash){msg("'"+clash+"'와 시간이 겹칩니다. 시간이나 요일을 바꿔 주세요.");window.__timoTrack("validation_error",{reason:"course_clash"});return;}
+  if(clash){msg("'"+clash+"'와 시간이 겹칩니다. 시간이나 요일을 바꿔 주세요.");trackValidation("course_clash");return;}
 
   if(editingId){
     var c=courses.find(function(x){return x.id===editingId;});
-    c.name=name;c.place=place;c.prof=prof;c.credit=credit;c.color=pickedColor;c.slots=slots;
+    c.name=name;c.place=place;c.credit=credit;c.color=pickedColor;c.slots=slots;
     toast("수정했습니다"); exitEdit();
-    window.__timoTrack("course_edit",{slot_count:slots.length});
+    window.__timoTrack("course_edit",{slot_count:slots.length,course_count:courses.length});
   }else{
-    courses.push({id:"c"+(++uid),name:name,place:place,prof:prof,credit:credit,color:pickedColor,slots:slots});
+    courses.push({id:"c"+(++uid),name:name,place:place,credit:credit,color:pickedColor,slots:slots});
     toast(name+" 담았습니다"); resetForm();
-    window.__timoTrack("course_add",{course_index:courses.length,slot_count:slots.length});
-    Store.get("timo:first_course_tracked").then(function(v){
-      if(!v){ window.__timoTrack("first_course_add",{}); Store.set("timo:first_course_tracked",true); }
-    });
+    window.__timoTrack("course_add",{course_index:courses.length,slot_count:slots.length,course_count:courses.length});
+    trackFirstCourse();
   }
   paint();
 });
@@ -919,7 +1152,6 @@ document.getElementById("btnSave").addEventListener("click",function(){
 function resetForm(){
   document.getElementById("fName").value="";
   document.getElementById("fPlace").value="";
-  document.getElementById("fProf").value="";
   document.getElementById("fCredit").value="3";
   rows=[{days:[],start:9*60,end:10*60+30}];
   renderSlots();
@@ -934,7 +1166,6 @@ function enterEdit(id){
   editingId=id;
   document.getElementById("fName").value=c.name;
   document.getElementById("fPlace").value=c.place;
-  document.getElementById("fProf").value=c.prof;
   document.getElementById("fCredit").value=c.credit;
   var map={},order=[];
   c.slots.forEach(function(s){var k=s.start+"-"+s.end;
@@ -1011,7 +1242,7 @@ document.getElementById("courseList").addEventListener("click",function(e){
     courses=courses.filter(function(x){return x.id!==id;});
     if(editingId===id) exitEdit();
     toast((c?c.name:"강의")+" 삭제"); paint();
-    window.__timoTrack("course_delete",{}); return;
+    window.__timoTrack("course_delete",{course_count:courses.length}); return;
   }
   enterEdit(id);
 });
@@ -1025,11 +1256,39 @@ var ttName=document.getElementById("ttName");
 ttName.addEventListener("input",function(){
   document.getElementById("ttHeadName").textContent=ttName.value||"2026 - 2";});
 
-document.getElementById("btnClear").addEventListener("click",function(){
-  if(!courses.length){toast("담은 강의가 없습니다");return;}
-  if(!confirm("담은 강의를 모두 지울까요? 되돌릴 수 없습니다."))return;
-  courses=[];exitEdit();paint();toast("모두 지웠습니다");
-  window.__timoTrack("clear_all",{});});
+var btnClear=document.getElementById("btnClear"), clearArmT=null;
+btnClear.addEventListener("click",function(){
+  if(!courses.length){
+    toast("담은 강의가 없습니다");
+    return;
+  }
+
+  // 브라우저 기본 confirm()에 의존하지 않고 2회 클릭으로 안전하게 전체 삭제한다.
+  if(btnClear.dataset.armed!=="true"){
+    btnClear.dataset.armed="true";
+    btnClear.textContent="한 번 더 누르면 전체 삭제";
+    toast("한 번 더 누르면 담은 강의를 모두 지웁니다");
+    clearTimeout(clearArmT);
+    clearArmT=setTimeout(function(){
+      btnClear.dataset.armed="false";
+      btnClear.textContent="전체 지우기";
+    },4000);
+    return;
+  }
+
+  clearTimeout(clearArmT);
+  btnClear.dataset.armed="false";
+  btnClear.textContent="전체 지우기";
+  courses=[];
+  exitEdit();
+  paint();
+
+  // 빈 상태도 즉시 저장해 새로고침 뒤 이전 강의가 다시 복원되지 않게 한다.
+  if(Store.ok&&ready) Store.set(DRAFT,snapshot());
+
+  toast("모두 지웠습니다");
+  window.__timoTrack("clear_all",{});
+});
 
 function cssVar(name){
   return getComputedStyle(appTT).getPropertyValue(name).trim();
@@ -1051,17 +1310,54 @@ function clip(ctx,text,max){
   return t+"…";
 }
 
-function timeRange(){
+// Long course names used to be cut with an ellipsis. Wrap them instead,
+// breaking on spaces where possible and mid-word only when a single word
+// is itself too wide (which is the normal case for Korean).
+function wrapText(ctx,text,max,maxLines){
+  var chunks=[];
+  String(text).split(/\s+/).filter(Boolean).forEach(function(w){
+    if(ctx.measureText(w).width<=max){ chunks.push(w); return; }
+    var piece="";
+    for(var k=0;k<w.length;k++){
+      if(ctx.measureText(piece+w[k]).width<=max) piece+=w[k];
+      else { if(piece) chunks.push(piece); piece=w[k]; }
+    }
+    if(piece) chunks.push(piece);
+  });
+  var lines=[], cur="";
+  chunks.forEach(function(c){
+    var cand=cur?cur+" "+c:c;
+    if(!cur||ctx.measureText(cand).width<=max) cur=cand;
+    else { lines.push(cur); cur=c; }
+  });
+  if(cur) lines.push(cur);
+  if(!lines.length) return [""];
+  if(lines.length>maxLines){
+    lines=lines.slice(0,maxLines);
+    lines[maxLines-1]=clip(ctx,lines[maxLines-1]+"…",max);
+  }
+  return lines;
+}
+
+function timeRange(list){
   var starts=[],ends=[];
-  courses.forEach(function(c){c.slots.forEach(function(s){starts.push(s.start);ends.push(s.end);});});
-  var top=Math.max(START,Math.floor(Math.min.apply(null,starts.concat([9*60]))/60)*60);
-  var bottom=Math.min(LAST,Math.ceil(Math.max.apply(null,ends.concat([18*60]))/60)*60);
-  return {top:top,bottom:bottom,n:bottom-top};
+  (list||courses).forEach(function(c){c.slots.forEach(function(s){starts.push(s.start);ends.push(s.end);});});
+
+  // 시간축 라벨만 가장 이른 수업이 속한 '정시'부터 시작한다.
+  // 예: 첫 수업 09:30 -> 왼쪽 시간축은 09:00부터 표시.
+  // 수업 블록의 시작 시각(s.start)은 절대 변경하지 않는다.
+  var earliest=starts.length ? Math.min.apply(null,starts) : 9*60;
+  var axisTop=Math.floor(earliest/60)*60;
+  var bottom=ends.length ? Math.max.apply(null,ends) : 18*60;
+  return {top:axisTop,bottom:bottom,n:bottom-axisTop};
 }
 function themeColors(){
   var t={bg:cssVar("--g-bg")||"#fff",ink:cssVar("--g-ink")||"#2A1F26",
          mut:cssVar("--g-mut")||"#888",line:cssVar("--g-line")||"rgba(0,0,0,.1)",
          pal:[],pin:[]};
+  // export-only tone; themes that don't set it fall back to the grid colour
+  t.canvas=cssVar("--g-canvas")||t.bg;
+  t.accent=cssVar("--g-accent")||"";
   for(var i=1;i<=8;i++){t.pal[i]=cssVar("--c"+i)||"#ddd";t.pin[i]=cssVar("--i"+i)||"#2A1F26";}
   return t;
 }
@@ -1082,9 +1378,17 @@ function tint(col,a){
   var c=rgbOf(col);
   return "rgba("+c[0]+","+c[1]+","+c[2]+","+a+")";
 }
+function shade(col,f,a){
+  var c=rgbOf(col);
+  return "rgba("+Math.round(c[0]*f)+","+Math.round(c[1]*f)+","+Math.round(c[2]*f)+","+a+")";
+}
 // the pattern has to read as part of the theme, so pull the most
 // characteristic light colour out of the palette instead of hard-coding pink
 function accentOf(T){
+  // a theme can name its pattern colour outright; the chroma guess below
+  // only runs when it doesn't, and it guesses badly for Opal, whose lilac
+  // sits behind a higher-chroma cream in the palette
+  if(T.accent) return T.accent;
   var best=T.pal[1], bestChroma=-1;
   for(var i=1;i<=8;i++){
     var c=rgbOf(T.pal[i]), mx=Math.max(c[0],c[1],c[2]), mn=Math.min(c[0],c[1],c[2]);
@@ -1098,7 +1402,7 @@ function accentOf(T){
 }
 
 function paintBackground(ctx,T,W,H,focusY){
-  ctx.fillStyle=T.bg; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle=T.canvas||T.bg; ctx.fillRect(0,0,W,H);
   if(exportBg==="plain") return;
   var acc=accentOf(T), u=W/1290, g, x, y, row;
   var fy=focusY||H*.5;
@@ -1118,22 +1422,22 @@ function paintBackground(ctx,T,W,H,focusY){
     for(x=0;x<W;x+=sw*2) ctx.fillRect(x,0,sw,H);
 
   }else if(exportBg==="dots"){
-    var dStep=58*u, dR=Math.max(1.6,5*u);
-    ctx.fillStyle=tint(T.ink,.12);
+    var dX=104*u, dY=64*u, dR=Math.max(3,12*u);
+    ctx.fillStyle=tint(acc,.95);
     row=0;
-    for(y=dStep*.5;y<H+dStep;y+=dStep*.62){
-      for(x=(row%2?dStep*.5:0);x<W+dStep;x+=dStep){
+    for(y=dY*.5;y<H+dY;y+=dY){
+      for(x=(row%2?dX*.5:0);x<W+dX;x+=dX){
         ctx.beginPath(); ctx.arc(x,y,dR,0,Math.PI*2); ctx.fill();
       }
       row++;
     }
 
   }else if(exportBg==="hearts"){
-    var hStep=150*u, hS=Math.max(8,26*u);
-    ctx.fillStyle=tint(T.ink,.16);
+    var hX=124*u, hY=78*u, hS=Math.max(10,30*u);
+    ctx.fillStyle=tint(acc,.95);
     row=0;
-    for(y=hStep*.4;y<H+hStep;y+=hStep*.62){
-      for(x=(row%2?hStep*.5:0);x<W+hStep;x+=hStep){
+    for(y=hY*.35;y<H+hY;y+=hY){
+      for(x=(row%2?hX*.5:0);x<W+hX;x+=hX){
         ctx.beginPath();
         ctx.moveTo(x,y+hS*.30);
         ctx.bezierCurveTo(x,y,x-hS*.50,y,x-hS*.50,y+hS*.30);
@@ -1153,6 +1457,65 @@ function paintBackground(ctx,T,W,H,focusY){
     ctx.fillStyle=tint(acc,.16);
     for(x=band*.34;x<W;x+=band*2) ctx.fillRect(x,0,Math.max(1,2*u),H);
     for(y=band*.34;y<H;y+=band*2) ctx.fillRect(0,y,W,Math.max(1,2*u));
+
+  }else if(exportBg==="floral"){
+    // dense ditsy rose print: layered blooms, sage sprigs, ochre buds.
+    // Fixed seed so a given export always looks the same.
+    var seed=20260810;
+    var rnd=function(){ seed=(seed*1103515245+12345)&0x7fffffff; return seed/0x7fffffff; };
+    var cell=46*u, k, a, cx, cy, r;
+    var petal=tint(acc,.78), petal2=shade(acc,.95,.72),
+        core=shade(acc,.92,.8), swirl=shade(acc,.82,.4);
+    var leaf="rgba(148,156,116,.4)", stem="rgba(150,158,124,.45)", bud="rgba(212,178,116,.45)";
+
+    for(y=-cell;y<H+cell;y+=cell){
+      for(x=-cell;x<W+cell;x+=cell){
+        cx=x+rnd()*cell*1.05; cy=y+rnd()*cell*1.05;
+
+        // a sprig of leaves, offset from the bloom
+        ctx.fillStyle=leaf;
+        for(k=0;k<3;k++){
+          a=rnd()*Math.PI*2;
+          var lr=(5+rnd()*4)*u;
+          ctx.save();
+          ctx.translate(cx+Math.cos(a)*cell*.34,cy+Math.sin(a)*cell*.34);
+          ctx.rotate(a);
+          ctx.beginPath(); ctx.ellipse(0,0,lr*1.5,lr*.62,0,0,Math.PI*2); ctx.fill();
+          ctx.restore();
+        }
+        // thin trailing vine
+        ctx.strokeStyle=stem; ctx.lineWidth=Math.max(.8,1.6*u);
+        ctx.beginPath();
+        a=rnd()*Math.PI*2;
+        ctx.moveTo(cx,cy);
+        ctx.quadraticCurveTo(cx+Math.cos(a)*cell*.3,cy+Math.sin(a)*cell*.5,
+                             cx+Math.cos(a)*cell*.62,cy+Math.sin(a)*cell*.44);
+        ctx.stroke();
+
+        if(rnd()<.24){
+          // small ochre bud instead of a rose
+          ctx.fillStyle=bud;
+          ctx.beginPath(); ctx.arc(cx,cy,(3.5+rnd()*2)*u,0,Math.PI*2); ctx.fill();
+          continue;
+        }
+
+        r=(.7+rnd()*.4)*15*u;
+        ctx.fillStyle=rnd()<.4?petal2:petal;
+        for(k=0;k<5;k++){
+          a=k/5*Math.PI*2+rnd()*.4;
+          ctx.beginPath();
+          ctx.arc(cx+Math.cos(a)*r*.48,cy+Math.sin(a)*r*.48,r*.52,0,Math.PI*2);
+          ctx.fill();
+        }
+        ctx.fillStyle=core;
+        ctx.beginPath(); ctx.arc(cx,cy,r*.46,0,Math.PI*2); ctx.fill();
+        // the coiled centre that makes it read as a rose, not a daisy
+        ctx.strokeStyle=swirl; ctx.lineWidth=Math.max(.8,r*.1);
+        ctx.beginPath(); ctx.arc(cx,cy,r*.24,.5,4.1); ctx.stroke();
+        ctx.beginPath(); ctx.arc(cx-r*.04,cy+r*.04,r*.1,2.1,5.5); ctx.stroke();
+      }
+    }
+
   }
 }
 
@@ -1173,7 +1536,7 @@ function drawCard(){
   // whole draw so paintBackground and drawPlate both stand down
   var prevBg=exportBg; exportBg="plain";
   try{
-  var S=2, PAD=26, HEAD=62, TIMEW=44, DAYH=28, ROWH=26/30, COLW=132, GAP=3;
+  var S=2, PAD=26, HEAD=62, TIMEW=60, DAYH=34, ROWH=40/30, COLW=132, GAP=3;
   var R=timeRange(), n=R.n, top=R.top;
   var W=PAD*2+TIMEW+COLW*5, H=PAD*2+HEAD+DAYH+ROWH*n;
 
@@ -1182,8 +1545,7 @@ function drawCard(){
   var ctx=cv.getContext("2d"); ctx.scale(S,S); ctx.textBaseline="middle";
   var T=themeColors();
 
-  paintBackground(ctx,T,W,H,H*.5);
-  drawPlate(ctx,T,22,22,W-44,H-44,20);
+  ctx.fillStyle=T.bg; ctx.fillRect(0,0,W,H);
 
   ctx.fillStyle=T.ink;
   ctx.font='500 21px "Playfair Display",Georgia,serif';
@@ -1192,12 +1554,12 @@ function drawCard(){
 
   var gx=PAD, gy=PAD+HEAD;
   paintGrid(ctx,T,{x:gx,y:gy,timeW:TIMEW,colW:COLW,dayH:DAYH,rowH:ROWH,gap:GAP,
-    top:top,n:n,dayFont:'500 13px "Pretendard Variable",Pretendard,sans-serif',
-    hourFont:'400 12px "Pretendard Variable",Pretendard,sans-serif',
-    nameFont:'600 14px "Pretendard Variable",Pretendard,sans-serif',
-    subFont:'400 12px "Pretendard Variable",Pretendard,sans-serif',
-    timeFont:'400 11px "Pretendard Variable",Pretendard,sans-serif',
-    radius:8,pad:8,line2:14,subAt:28,subGap:14});
+    top:top,n:n,dayFont:'500 16px "Pretendard Variable",Pretendard,sans-serif',
+    hourFont:'400 15px "Pretendard Variable",Pretendard,sans-serif',
+    nameFont:'600 18px "Pretendard Variable",Pretendard,sans-serif',
+    subFont:'400 15px "Pretendard Variable",Pretendard,sans-serif',
+    timeFont:'400 14px "Pretendard Variable",Pretendard,sans-serif',
+    radius:8,pad:9,line2:17,subAt:40,subGap:20});
 
   ctx.fillStyle=T.mut; ctx.globalAlpha=.75;
   ctx.font='italic 11px Georgia,serif'; ctx.textAlign="right";
@@ -1210,10 +1572,10 @@ function drawCard(){
 function drawWallpaper(ipad,landscape){
   var W = ipad ? (landscape?2732:2048) : 1290, H = ipad ? (landscape?2048:2732) : 2796;
   var BASEW = ipad ? 2048 : 1290;
-  var PAD=155, TIMEW=68, DAYH=54, GAP=5;
+  var PAD=155, TIMEW=96, DAYH=54, GAP=5;
   var COLW=(BASEW-PAD*2-TIMEW)/5;
   var gx=PAD+(W-BASEW)/2;
-  var CLOCK=830;
+  var CLOCK=830+Math.round(H*0.03); // Lower the wallpaper timetable by 3% of image height.
   var FOOT=250;
   var R=timeRange(), n=R.n, top=R.top;
 
@@ -1224,9 +1586,9 @@ function drawWallpaper(ipad,landscape){
 
   var titleY=CLOCK+78;
   var availTop=titleY+84, availBottom=H-FOOT;
-  var rowH=Math.min(76/30,Math.max(38/30,(availBottom-availTop-DAYH)/n));
+  var rowH=Math.min(76/30,(availBottom-availTop-DAYH)/n);
   var gridH=DAYH+rowH*n;
-  var gy=availTop+Math.max(0,(availBottom-availTop-gridH)/2);
+  var gy=availTop;
 
   var plx=gx-46, plw=TIMEW+COLW*5+92;
   var ply=titleY-104, plh=(gy+gridH+56)-ply;
@@ -1240,12 +1602,12 @@ function drawWallpaper(ipad,landscape){
   ctx.fillText(ttName.value||"2026 - 2",W/2,titleY);
 
   paintGrid(ctx,T,{x:gx,y:gy,timeW:TIMEW,colW:COLW,dayH:DAYH,rowH:rowH,gap:GAP,
-    top:top,n:n,dayFont:'500 24px "Pretendard Variable",Pretendard,sans-serif',
-    hourFont:'400 21px "Pretendard Variable",Pretendard,sans-serif',
-    nameFont:'600 24px "Pretendard Variable",Pretendard,sans-serif',
-    subFont:'400 18px "Pretendard Variable",Pretendard,sans-serif',
-    timeFont:'400 16px "Pretendard Variable",Pretendard,sans-serif',
-    radius:13,pad:12,line2:26,subAt:50,subGap:23});
+    top:top,n:n,dayFont:'500 30px "Pretendard Variable",Pretendard,sans-serif',
+    hourFont:'400 27px "Pretendard Variable",Pretendard,sans-serif',
+    nameFont:'600 32px "Pretendard Variable",Pretendard,sans-serif',
+    subFont:'400 24px "Pretendard Variable",Pretendard,sans-serif',
+    timeFont:'400 22px "Pretendard Variable",Pretendard,sans-serif',
+    radius:13,pad:14,line2:28,subAt:68,subGap:31});
 
   ctx.fillStyle=T.mut; ctx.globalAlpha=.6;
   ctx.font='italic 23px Georgia,serif'; ctx.textAlign="center";
@@ -1261,9 +1623,13 @@ function paintGrid(ctx,T,g){
   });
 
   ctx.textAlign="right"; ctx.font=g.hourFont; ctx.fillStyle=T.mut;
+  // Anchor hour labels to the start of each hour, as in the on-screen grid.
+  ctx.save();
+  ctx.textBaseline="top";
   for(var m=g.top;m<g.top+g.n;m+=60){
-    ctx.fillText(String(Math.floor(m/60)),g.x+g.timeW-14,g.y+g.dayH+g.rowH*(m-g.top)+g.rowH*30);
+    ctx.fillText(m%60 ? fmt(m) : String(hour12(m)),g.x+g.timeW-14,g.y+g.dayH+g.rowH*(m-g.top)+g.gap/2);
   }
+  ctx.restore();
 
   ctx.strokeStyle=T.line; ctx.lineWidth=1;
   for(var c=0;c<5;c++){
@@ -1275,19 +1641,27 @@ function paintGrid(ctx,T,g){
   courses.forEach(function(co){
     co.slots.forEach(function(s){
       var x=g.x+g.timeW+g.colW*s.day+g.gap,
+          // 이미지 저장에서도 실제 수업 시작 시각을 그대로 사용한다.
           y=g.y+g.dayH+(s.start-g.top)*g.rowH+g.gap/2,
           w=g.colW-g.gap*2,
-          h=Math.max(10*g.rowH,(s.end-s.start)*g.rowH)-g.gap;
+          h=Math.max(0,(s.end-s.start)*g.rowH-g.gap);
       ctx.fillStyle=T.pal[co.color]||"#ddd";
       roundRect(ctx,x,y,w,h,g.radius); ctx.fill();
       ctx.strokeStyle="rgba(0,0,0,.06)"; ctx.lineWidth=1; ctx.stroke();
 
       ctx.fillStyle=T.pin[co.color]||"#2A1F26";
       ctx.font=g.nameFont;
-      ctx.fillText(clip(ctx,co.name,w-g.pad*2),x+g.pad,y+g.line2);
+      var namePx=parseFloat((/([\d.]+)px/.exec(g.nameFont)||[0,14])[1]);
+      var nameLH=namePx*1.32;
+      // a second line is only worth taking if the block still has room
+      // underneath it for the room and time lines
+      var maxLines=(h>=g.subAt+nameLH+6)?2:1;
+      var nameLines=wrapText(ctx,co.name,w-g.pad*2,maxLines);
+      for(var nl=0;nl<nameLines.length;nl++)
+        ctx.fillText(nameLines[nl],x+g.pad,y+g.line2+nl*nameLH);
 
-      var maxW=w-g.pad*2, line=g.subAt;
-      if(co.place && h>g.subAt+6){
+      var maxW=w-g.pad*2, line=g.subAt+(nameLines.length-1)*nameLH;
+      if(co.place && h>line+6){
         ctx.globalAlpha=.85; ctx.font=g.subFont;
         ctx.fillText(clip(ctx,co.place,maxW),x+g.pad,y+line);
         ctx.globalAlpha=1;
@@ -1304,137 +1678,333 @@ function paintGrid(ctx,T,g){
 
 var modal=document.getElementById("modal"),
     mImg=document.getElementById("mImg"),
-    mDl=document.getElementById("mDl"), lastBlob=null,
+    mDl=document.getElementById("mDl"),
+    mOpen=document.getElementById("mOpen"),
+    saveGuide=document.getElementById("saveGuide"),
+    lastBlob=null,lastDataUrl="",lastFileName="",previewUrl="",
     ipadOrient=document.getElementById("ipadOrient"),
     bgRow=document.getElementById("bgRow"),
     exportMode="wall", ipadLandscape=false, exportBg="plain";
 
-function releaseUrl(){
-  lastBlob=null;
-  if(mDl.dataset.url){URL.revokeObjectURL(mDl.dataset.url);delete mDl.dataset.url;}
+function saveEnv(){
+  var ua=navigator.userAgent||"";
+  var ios=/iP(?:hone|ad|od)/i.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  return {
+    ios:ios,
+    instagram:/Instagram/i.test(ua),
+    naver:/NAVER/i.test(ua)
+  };
 }
-function closeModal(){modal.classList.add("hidden");releaseUrl();}
+function clearPreviewUrl(){
+  if(previewUrl){
+    try{ URL.revokeObjectURL(previewUrl); }catch(e){}
+    previewUrl="";
+  }
+}
+function releaseUrl(){
+  clearPreviewUrl();
+  lastBlob=null;
+  lastDataUrl="";
+  lastFileName="";
+  if(mOpen){mOpen.removeAttribute("href");mOpen.classList.add("hidden");}
+}
+function preparePreviewUI(){
+  clearPreviewUrl();
+  lastBlob=null;
+  lastDataUrl="";
+  mImg.removeAttribute("src");
+  mImg.alt="시간표 이미지 만드는 중";
+  mDl.disabled=true;
+  mDl.textContent="이미지 준비 중…";
+  if(mOpen){mOpen.removeAttribute("href");mOpen.classList.add("hidden");}
+  if(saveGuide) saveGuide.textContent="이미지를 만들고 있어요. 잠시 후 이 화면에 바로 표시됩니다.";
+}
+function updateSaveGuide(){
+  if(!saveGuide) return;
+  var env=saveEnv();
+  if(env.ios){
+    mDl.textContent='사진에 저장하는 법';
+    saveGuide.innerHTML='<strong>위 이미지를 길게 누른 뒤 “사진에 저장”</strong>을 선택하면 사진 앱에 들어갑니다. 이미지가 작으면 “이미지 크게 보기”를 눌러 주세요.';
+    if(mOpen){mOpen.classList.remove("hidden");}
+  }else if(env.instagram||env.naver){
+    mDl.textContent='저장 안내';
+    saveGuide.innerHTML='앱 내 브라우저에서는 다운로드가 제한될 수 있어요. <strong>위 이미지를 길게 눌러 저장</strong>하거나 “이미지 크게 보기” 후 저장해 주세요.';
+    if(mOpen){mOpen.classList.remove("hidden");}
+  }else{
+    mDl.textContent='PNG 다운로드';
+    saveGuide.textContent='버튼을 누르면 PNG 파일로 다운로드됩니다.';
+    if(mOpen){mOpen.classList.remove("hidden");}
+  }
+  mDl.disabled=false;
+  /* 실제 미리보기가 준비된 뒤에만 다시 내보내기를 허용한다. */
+  setExportBusy(false);
+}
+function closeModal(){modal.classList.add("hidden");releaseUrl();setExportBusy(false);}
 document.getElementById("mClose").addEventListener("click",closeModal);
 modal.addEventListener("click",function(e){if(e.target===modal) closeModal();});
 document.addEventListener("keydown",function(e){
-  if(e.key==="Escape"&&!modal.classList.contains("hidden")) closeModal();});
+  if(e.key!=="Escape") return;
+  if(fbModal&&!fbModal.classList.contains("hidden")){ closeFeedback("dismiss"); return; }
+  if(!modal.classList.contains("hidden")) closeModal();});
 
+function dataUrlToBlob(dataUrl){
+  var parts=dataUrl.split(',');
+  var meta=parts[0]||'';
+  var mime=(meta.match(/data:([^;]+)/)||[])[1]||'image/png';
+  var bin=atob(parts[1]||'');
+  var bytes=new Uint8Array(bin.length);
+  for(var i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+  return new Blob([bytes],{type:mime});
+}
+function imageBlob(){
+  return lastBlob || (lastDataUrl ? dataUrlToBlob(lastDataUrl) : null);
+}
+function triggerBlobDownload(blob,name){
+  if(!blob) return false;
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");
+  a.href=url;
+  a.download=name;
+  a.style.display="none";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(function(){try{URL.revokeObjectURL(url);}catch(e){}},5000);
+  return true;
+}
+function setPreviewFromBlob(blob){
+  if(!blob) return false;
+  clearPreviewUrl();
+  lastBlob=blob;
+  previewUrl=URL.createObjectURL(blob);
+  mImg.alt="내보낸 시간표";
+  mImg.onload=function(){
+    mImg.onload=null;
+    mImg.onerror=null;
+    updateSaveGuide();
+  };
+  mImg.onerror=function(){
+    mImg.onload=null;
+    mImg.onerror=null;
+    /* Blob 미리보기가 실패하는 Safari 환경에서는 data URL로 한 번 더 시도 */
+    if(lastDataUrl){
+      mImg.src=lastDataUrl;
+      updateSaveGuide();
+    }else{
+      if(saveGuide) saveGuide.textContent="이미지 미리보기를 열지 못했습니다. 다시 한 번 이미지로 저장을 눌러 주세요.";
+      mDl.disabled=false;
+      mDl.textContent="다시 시도";
+    }
+  };
+  mImg.src=previewUrl;
+  if(mOpen) mOpen.href=previewUrl;
+  return true;
+}
+function finishCanvasPreview(cv,name,autoSave){
+  lastFileName=name;
+  /* fallback용 data URL. 실패해도 Blob 미리보기는 계속 시도한다. */
+  try{ lastDataUrl=cv.toDataURL("image/png"); }catch(e){ lastDataUrl=""; }
+
+  if(cv.toBlob){
+    try{
+      cv.toBlob(function(blob){
+        if(blob){
+          setPreviewFromBlob(blob);
+          if(autoSave&&!saveEnv().ios) triggerBlobDownload(blob,name);
+        }else if(lastDataUrl){
+          var fallback=dataUrlToBlob(lastDataUrl);
+          setPreviewFromBlob(fallback);
+        }else{
+          if(saveGuide) saveGuide.textContent="이미지를 만들지 못했습니다. 다시 시도해 주세요.";
+          mDl.disabled=false;mDl.textContent="다시 시도";setExportBusy(false);
+        }
+      },"image/png");
+      return;
+    }catch(e){}
+  }
+
+  if(lastDataUrl){
+    var fallbackBlob=dataUrlToBlob(lastDataUrl);
+    setPreviewFromBlob(fallbackBlob);
+    if(autoSave&&!saveEnv().ios) triggerBlobDownload(fallbackBlob,name);
+  }else{
+    if(saveGuide) saveGuide.textContent="이미지를 만들지 못했습니다. 다시 시도해 주세요.";
+    mDl.disabled=false;mDl.textContent="다시 시도";setExportBusy(false);
+  }
+}
 function buildImage(autoSave){
-  releaseUrl();
+  preparePreviewUI();
   var cv = exportMode==="card" ? drawCard() : drawWallpaper(exportMode==="ipad",exportMode==="ipad"&&ipadLandscape);
   var base=(ttName.value||"timo").replace(/[\\/:*?"<>|]/g,"").trim()||"timo";
   var suffix = exportMode==="wall" ? "-wallpaper" : exportMode==="ipad" ? "-ipad" : "";
   var name=base+suffix+".png";
-
-  mImg.src=cv.toDataURL("image/png");
-  mDl.download=name;
-  mDl.href=mImg.src;
-
-  cv.toBlob(function(blob){
-    if(!blob) return;
-    lastBlob=blob;
-    var url=URL.createObjectURL(blob);
-    mDl.href=url; mDl.dataset.url=url;
-    if(autoSave){
-      var a=document.createElement("a");
-      a.href=url; a.download=name;
-      document.body.appendChild(a); a.click(); a.remove();
-    }
-  },"image/png");
+  finishCanvasPreview(cv,name,autoSave);
 }
 
 document.querySelectorAll(".js-mode").forEach(function(b){
   b.addEventListener("click",function(){
+    var prevMode=exportMode;
     exportMode=b.dataset.mode;
     document.querySelectorAll(".js-mode").forEach(function(x){
       x.setAttribute("aria-pressed",String(x===b));});
     ipadOrient.classList.toggle("hidden",exportMode!=="ipad");
     bgRow.classList.toggle("hidden",exportMode==="card");
-    window.__timoTrack("export_mode_change",{mode:exportMode});
+    if(prevMode!==exportMode){
+      window.__timoTrack("export_mode_change",{
+        mode:exportMode,previous_mode:prevMode,
+        theme:currentTheme(),bg:effectiveBg()
+      });
+    }
     buildImage(false);
   });
 });
-// The download attribute is a no-op in iOS Safari and in most in-app
-// browsers (KakaoTalk, Instagram): the link just opens the PNG at full
-// size, which reads as the page blowing up. So on ANY touch device we
-// never let the navigation happen — share sheet if we can, long-press
-// guidance if we can't. Desktop keeps the ordinary download.
-function isTouch(){
-  try{ return window.matchMedia("(pointer:coarse)").matches; }
-  catch(err){ return "ontouchstart" in window; }
-}
 function saveHint(){
-  toast("아래 이미지를 길게 눌러 사진에 저장하세요");
-  try{ mImg.scrollIntoView({block:"center",behavior:"smooth"}); }catch(err){}
+  var env=saveEnv();
+  if(env.ios){
+    toast("이미지를 길게 눌러 ‘사진에 저장’을 선택해 주세요");
+  }else{
+    toast("위 이미지를 길게 눌러 저장해 주세요");
+  }
   mImg.classList.add("nudge");
-  setTimeout(function(){ mImg.classList.remove("nudge"); },2400);
-}
-function canSharePng(file){
-  try{ return !!(file && navigator.share && navigator.canShare &&
-                 navigator.canShare({files:[file]})); }
-  catch(err){ return false; }
+  setTimeout(function(){mImg.classList.remove("nudge");},1200);
+  try{mImg.scrollIntoView({block:"center",behavior:"smooth"});}catch(err){}
 }
 mDl.addEventListener("click",function(e){
-  if(!lastBlob){ e.preventDefault(); toast("이미지를 준비하는 중입니다"); return; }
-  var file=null;
-  try{ file=new File([lastBlob],mDl.download||"timo.png",{type:"image/png"}); }
-  catch(err){ file=null; }
+  e.preventDefault();
+  if(mDl.disabled) return;
+  var ctx=getAnalyticsContext();
+  var env=saveEnv();
 
-  if(canSharePng(file)){
-    e.preventDefault();
-    try{
-      navigator.share({files:[file],title:mDl.download||"Timo"}).then(function(){
-        window.__timoTrack("export_share",{mode:exportMode});
-      }).catch(function(err){
-        if(err&&err.name==="AbortError") return;
-        saveHint();
-      });
-    }catch(err){ saveHint(); }
+  if(!mImg.src){
+    buildImage(false);
     return;
   }
 
-  if(isTouch()){ e.preventDefault(); saveHint(); return; }
-  if(!("download" in document.createElement("a"))){ e.preventDefault(); saveHint(); }
+  /* iOS Safari/WebView에서는 Web Share 파일 공유가 '이미지 저장'을 제공하지 않는
+     WebKit 문제가 있으므로, 실제 IMG를 길게 눌러 저장하는 안정적인 경로를 안내한다. */
+  if(env.ios || env.instagram || env.naver){
+    saveHint();
+    window.__timoTrack("image_save_click",withUTM(merge(ctx,{
+      method:env.ios?"ios_long_press":"inapp_long_press",time_to_export:timeToExport()
+    })));
+    return;
+  }
+
+  var ok=triggerBlobDownload(imageBlob(),lastFileName||"timo.png");
+  window.__timoTrack("image_save_click",withUTM(merge(ctx,{
+    method:ok?"blob_download":"long_press",time_to_export:timeToExport()
+  })));
+  if(!ok){saveHint();return;}
+  maybeFeedback(ctx);
 });
 
-// on a phone the button should say what it will actually do
-if(isTouch()) mDl.textContent="이미지 저장";
+/* ---------------- 만족도 조사 (저장 클릭 후 일정 확률, 세션 1회) ---------------- */
+var FB_PROBABILITY=0.3;
+var fbModal=document.getElementById("fbModal"),
+    fbRating=0, fbFeature="", fbCtx=null, fbDone=false;
+
+function maybeFeedback(ctx){
+  if(!fbModal) return;
+  if(SS.get("timo:feedback_shown")) return;
+  if(Math.random()>=FB_PROBABILITY) return;
+  SS.set("timo:feedback_shown","1");
+  fbCtx={theme:ctx.theme,bg:ctx.bg,mode:ctx.mode};
+  fbRating=0; fbFeature=""; fbDone=false;
+  fbModal.querySelectorAll("#fbRate button,#fbOpts button").forEach(function(x){
+    x.setAttribute("aria-pressed","false");});
+  /* 다운로드 클릭 직후에는 안내와 겹치지 않도록 잠깐 뒤에 띄운다 */
+  setTimeout(function(){ fbModal.classList.remove("hidden"); },1400);
+}
+function closeFeedback(reason){
+  if(!fbModal||fbModal.classList.contains("hidden")) return;
+  fbModal.classList.add("hidden");
+  if(reason==="dismiss"&&!fbDone){
+    fbDone=true;
+    window.__timoTrack("feedback_dismiss",merge(fbCtx||{},{rating:fbRating||0}));
+  }
+}
+if(fbModal){
+  document.getElementById("fbClose").addEventListener("click",function(){closeFeedback("dismiss");});
+  fbModal.addEventListener("click",function(e){ if(e.target===fbModal) closeFeedback("dismiss"); });
+  document.getElementById("fbRate").addEventListener("click",function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    fbRating=+b.dataset.r;
+    this.querySelectorAll("button").forEach(function(x){
+      x.setAttribute("aria-pressed",String(x===b));});
+  });
+  document.getElementById("fbOpts").addEventListener("click",function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    fbFeature=b.dataset.f;
+    this.querySelectorAll("button").forEach(function(x){
+      x.setAttribute("aria-pressed",String(x===b));});
+  });
+  document.getElementById("fbSubmit").addEventListener("click",function(){
+    if(!fbRating){ toast("점수를 선택해 주세요"); return; }
+    if(fbDone){ fbModal.classList.add("hidden"); return; }
+    fbDone=true;
+    window.__timoTrack("feedback_submit",merge(fbCtx||{},{
+      rating:fbRating, feature_request:fbFeature||"none"
+    }));
+    fbModal.classList.add("hidden");
+    toast("의견 고맙습니다");
+  });
+}
 
 document.querySelectorAll(".js-bg").forEach(function(b){
   b.addEventListener("click",function(){
+    var prevBgSel=exportBg;
     exportBg=b.dataset.bg;
     document.querySelectorAll(".js-bg").forEach(function(x){
       x.setAttribute("aria-pressed",String(x===b));});
-    window.__timoTrack("export_bg_change",{bg:exportBg});
+    if(prevBgSel!==exportBg){
+      window.__timoTrack("export_bg_change",{
+        bg:exportBg,previous_bg:prevBgSel,
+        theme:currentTheme(),mode:exportMode
+      });
+    }
     buildImage(false);
   });
 });
 document.querySelectorAll(".js-ipad-o").forEach(function(b){
   b.addEventListener("click",function(){
+    var prevO = ipadLandscape?"landscape":"portrait";
     ipadLandscape = b.dataset.o==="landscape";
     document.querySelectorAll(".js-ipad-o").forEach(function(x){
       x.setAttribute("aria-pressed",String(x===b));});
+    var nextO = ipadLandscape?"landscape":"portrait";
+    if(prevO!==nextO) window.__timoTrack("ipad_orientation_change",{orientation:nextO});
     buildImage(false);
   });
 });
 
 document.getElementById("btnExport").addEventListener("click",function(){
   if(!courses.length){toast("강의를 먼저 담아 주세요");return;}
-  var btn=this,label=btn.textContent;
-  btn.textContent="만드는 중…";
+  if(exportBusy) return;  /* 미리보기가 완성될 때까지 중복 탭을 완전히 잠근다. */
+  setExportBusy(true);
+  var ran=false;
   var go=function(){
+    /* document.fonts.ready의 then/catch 양쪽에서 같은 함수가 호출돼도 한 번만 실행 */
+    if(ran) return;
+    ran=true;
     try{
-      buildImage(false);
       modal.classList.remove("hidden");
-      toast("이미지를 만들었습니다");
-      window.__timoTrack("export_image",{
-        mode:exportMode,
-        course_count:courses.length,
-        credit_total:courses.reduce(function(a,c){return a+(c.credit||0);},0),
-        theme:appTT.dataset.theme
-      });
-    }catch(err){ toast("이미지를 만들지 못했습니다"); }
-    btn.textContent=label;
+      /* buildImage 안에서 preparePreviewUI()를 호출하므로 여기서는 중복 호출하지 않는다. */
+      buildImage(false);
+      toast("이미지를 만들고 있습니다");
+      var ctx=merge(getAnalyticsContext(),{time_to_export:timeToExport()});
+      window.__timoTrack("export_image",withUTM(merge(ctx,{})));
+      if(!LS.get("timo:first_complete")){
+        LS.set("timo:first_complete","1");
+        window.__timoTrack("first_timetable_complete",merge(ctx,{}));
+      }
+    }catch(err){
+      modal.classList.remove("hidden");
+      if(saveGuide) saveGuide.textContent="이미지를 만들지 못했습니다. 다시 시도해 주세요.";
+      mDl.disabled=false; mDl.textContent="다시 시도";
+      setExportBusy(false);
+      toast("이미지를 만들지 못했습니다");
+      try{console.error("Timo export error",err);}catch(e){}
+    }
   };
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(go).catch(go);
   else go();
@@ -1447,32 +2017,46 @@ function applyAppTheme(t){
 }
 document.querySelectorAll(".js-app-theme").forEach(function(b){
   b.addEventListener("click",function(){
-    applyAppTheme(b.dataset.theme);queueDraft();
-    window.__timoTrack("theme_change",{theme:b.dataset.theme});
+    var prevTheme=appTT.dataset.theme, nextTheme=b.dataset.theme;
+    applyAppTheme(nextTheme);queueDraft();
+    if(prevTheme===nextTheme) return;  /* 이미 선택된 테마 재클릭은 세지 않는다 */
+    window.__timoTrack("theme_change",{
+      theme:nextTheme,previous_theme:prevTheme,course_count:courses.length
+    });
   });});
 
 var folder=document.getElementById("folder"),
     pageHome=document.getElementById("pageHome");
 
-function showPage(name){
+var currentPage="home";
+function showPage(name,source){
   var build = name==="build";
+  var entering = build && currentPage!=="build";
   pageHome.classList.toggle("hidden",build);
   app.classList.toggle("hidden",!build);
   folder.classList.toggle("wide",build);
   document.querySelectorAll(".tab").forEach(function(t){
     t.setAttribute("aria-selected",String(t.dataset.page===name));});
   window.scrollTo(0,0);
+  currentPage=name;
   window.__timoTrack("page_view",{
     page_title: build ? "시간표 만들기" : "홈",
     page_location: location.href.split("#")[0] + (build ? "#build" : "#home")
   });
+  if(entering){
+    markBuilderStart();
+    window.__timoTrack("builder_enter",withUTM({entry_source:source||"tab"}));
+  }
 }
 document.querySelectorAll(".tab").forEach(function(t){
-  t.addEventListener("click",function(){showPage(t.dataset.page);});});
+  t.addEventListener("click",function(){showPage(t.dataset.page,"tab");});});
 document.querySelectorAll(".js-open").forEach(function(b){
   b.addEventListener("click",function(){
-    window.__timoTrack("cta_click",{location:b.dataset.location||"unknown"});
-    showPage("build");
+    var loc=b.dataset.location||"unknown";
+    var p={location:loc};
+    if(loc==="hero"){ p.experiment_name=CTA_EXPERIMENT; p.variant=ctaVariant; }
+    window.__timoTrack("cta_click",p);
+    showPage("build",loc);
   });});
 
 document.querySelectorAll(".js-scroll").forEach(function(b){
@@ -1573,21 +2157,28 @@ document.getElementById("btnSaveTT").addEventListener("click",function(){
   Store.set(LIB,saved);
   paintLibrary();
   toast("보관함에 저장했습니다");
-  window.__timoTrack("timetable_save",{});
+  window.__timoTrack("timetable_save",{
+    theme:currentTheme(),course_count:courses.length,credit_total:creditTotal()
+  });
 });
 document.getElementById("savedList").addEventListener("click",function(e){
   var item=e.target.closest("[data-sid]"); if(!item)return;
   var id=item.dataset.sid, it=saved.find(function(x){return x.id===id;});
   if(e.target.classList.contains("js-drop")){
+    var droppedCount = (it&&it.courses)?it.courses.length:0;
     saved=saved.filter(function(x){return x.id!==id;});
-    Store.set(LIB,saved); paintLibrary(); toast("삭제했습니다"); return;
+    Store.set(LIB,saved); paintLibrary(); toast("삭제했습니다");
+    window.__timoTrack("timetable_delete",{course_count:droppedCount});
+    return;
   }
   if(!it) return;
   if(courses.length && !confirm("지금 작업 중인 시간표를 덮어씁니다. 계속할까요?")) return;
   restore({name:it.name,theme:it.theme,courses:JSON.parse(JSON.stringify(it.courses)),
            uid:it.courses.length});
   toast(it.name+" 불러왔습니다");
-  window.__timoTrack("timetable_load",{});
+  window.__timoTrack("timetable_load",{
+    theme:it.theme||currentTheme(),course_count:it.courses.length
+  });
 });
 
 ttName.addEventListener("input",queueDraft);
@@ -1600,8 +2191,12 @@ if(Store.ok){
   Promise.all([Store.get(LIB),Store.get(DRAFT)]).then(function(r){
     if(Array.isArray(r[0])){ saved=r[0]; paintLibrary(); }
     ready=true;
-    if(r[1]&&r[1].courses&&r[1].courses.length) restore(r[1]);
-  }).catch(function(){ ready=true; });
+    var draft = (r[1]&&r[1].courses&&r[1].courses.length) ? r[1] : null;
+    if(draft) restore(draft);
+    trackVisit(!!draft, Array.isArray(r[0])?r[0].length:0);
+  }).catch(function(){ ready=true; trackVisit(false,0); });
+}else{
+  trackVisit(false,0);
 }
 })();
 </script>
